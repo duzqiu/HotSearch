@@ -26,7 +26,7 @@ class ToutiaoSpider(scrapy.Spider):
 
     def parse(self, response):
         new_list = []
-        for i in range(10):
+        for i in range(15):
             new_list.append(response.json()["data"][i]['Title'])
         key = "UZ9juRSNtAMpnzWEQokJYF"
         
