@@ -34,7 +34,7 @@ class ToutiaoSpider(scrapy.Spider):
         formatted = now.strftime("%Y-%m-%d %H:%M")
         title = f"今日头条热榜 {formatted}"
         content = f"""
-🥇{new_list[0]}
+🏆{new_list[0]}
 
 🥈{new_list[1]}
 
