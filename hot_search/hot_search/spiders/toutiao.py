@@ -30,25 +30,25 @@ class ToutiaoSpider(scrapy.Spider):
         key = "UZ9juRSNtAMpnzWEQokJYF"
         title = "今日头条热榜"
         content = f"""
-{new_list[0]}
+🥇{new_list[0]}
 
-{new_list[1]}
+🥈{new_list[1]}
 
-{new_list[2]}
+🥉{new_list[2]}
 
-{new_list[3]}
+4️⃣{new_list[3]}
 
-{new_list[4]}
+5️⃣{new_list[4]}
 
-{new_list[5]}
+6️⃣{new_list[5]}
 
-{new_list[6]}
+7️⃣{new_list[6]}
 
-{new_list[7]}
+8️⃣{new_list[7]}
 
-{new_list[8]}
+9️⃣{new_list[8]}
 
-{new_list[9]}
+🔟{new_list[9]}
         """
         bark = SendBark(key)
         bark.send_t_c(title, content)
