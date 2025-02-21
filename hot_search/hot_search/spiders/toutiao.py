@@ -2,6 +2,7 @@ import scrapy
 #from scrapy_splash import SplashRequest
 from urllib.parse import urlencode
 import requests
+from datetime import datetime
 
 class SendBark:
     def __init__(self, key):
@@ -28,7 +29,10 @@ class ToutiaoSpider(scrapy.Spider):
         for i in range(10):
             new_list.append(response.json()["data"][i]['Title'])
         key = "UZ9juRSNtAMpnzWEQokJYF"
-        title = "今日头条热榜"
+        
+        now = datetime.now()
+        formatted = now.strftime("%Y-%m-%d %H:%M:%S")
+        title = f"今日头条热榜 {formatted}"
         content = f"""
 🥇{new_list[0]}
 
