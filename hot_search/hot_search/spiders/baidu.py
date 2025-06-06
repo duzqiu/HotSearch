@@ -1,12 +1,8 @@
 from typing import Any
-
 import scrapy
-#from scrapy_splash import SplashRequest
-from urllib.parse import urlencode
 import requests
-from datetime import datetime
-
 from scrapy.http import Response
+from datetime import datetime
 
 
 class SendBark:
@@ -17,27 +13,25 @@ class SendBark:
         self.url = f"https://api.day.app/{self.key}/{title}/{content}"
         requests.get(self.url)
 
-class ToutiaoSpider(scrapy.Spider):
-    name = "toutiao"
-    allowed_domains = ["toutiao.com"]
-    base_url = "https://www.toutiao.com/hot-event/hot-board/"
-    params = {
-        "origin": "toutiao_pc",
-        "_signature": "_02B4Z6wo00901vT9yYgAAIDCE.2en18RBNL02c0AANqVEIvz9cMx2zoZxvPsiiDsn54EeZCrLWwuGED-O85.I7udeWSbMkOxtZelfOtaXbVAdZX3UBhXMN2o4BWqZ2MjraVG4CaycB2ctUa586"
-    }
-    url = f"{base_url}?{urlencode(params)}"
+class BaiduSpider(scrapy.Spider):
+    name = "baidu"
+    allowed_domains = ["baidu.com"]
+    url = "https://www.baidu.com"
+
     def start_requests(self):
         yield scrapy.Request(url=self.url, callback=self.parse, method='GET')
 
     def parse(self, response: Response, **kwargs: Any) -> Any:
+        baidu_search_list = response.xpath("//ul[@id='hotsearch-content-wrapper']")
         new_list = []
-        for i in range(10):
-            new_list.append(response.json()["data"][i]['Title'])
+        for baidu_search in baidu_search_list.xpath('.//li'):
+            new_list.append(baidu_search.xpath('.//a/span[2]/text()').get())
+        # print(new_list)
         key = "UZ9juRSNtAMpnzWEQokJYF"
-        
+
         now = datetime.now()
         formatted = now.strftime("%Y-%m-%d %H:%M")
-        title = f"头条热榜 {formatted}"
+        title = f"百度热榜 {formatted}"
         content = f"""
 🏆{new_list[0]}
 
@@ -58,8 +52,6 @@ class ToutiaoSpider(scrapy.Spider):
 9️⃣{new_list[8]}
 
 🔟{new_list[9]}
-        """
+            """
         bark = SendBark(key)
         bark.send_t_c(title, content)
-
-
