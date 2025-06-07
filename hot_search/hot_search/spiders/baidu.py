@@ -25,7 +25,7 @@ class BaiduSpider(scrapy.Spider):
         baidu_search_list = response.xpath("//ul[@id='hotsearch-content-wrapper']")
         new_list = []
         for baidu_search in baidu_search_list.xpath('.//li'):
-            new_list.append(baidu_search.xpath('.//a/span[2]/text()').get())
+            new_list.append(baidu_search.xpath('.//a/span[2]/text()').get().replace("#", "@"))
         # print(new_list)
         key = "UZ9juRSNtAMpnzWEQokJYF"
 
@@ -35,23 +35,24 @@ class BaiduSpider(scrapy.Spider):
         content = f"""
 🏆{new_list[0]}
 
-🥈{new_list[1]}
+🥈{new_list[2]}
 
-🥉{new_list[2]}
+🥉{new_list[4]}
 
-4️⃣{new_list[3]}
+4️⃣{new_list[6]}
 
-5️⃣{new_list[4]}
+5️⃣{new_list[8]}
 
-6️⃣{new_list[5]}
+6️⃣{new_list[1]}
 
-7️⃣{new_list[6]}
+7️⃣{new_list[3]}
 
-8️⃣{new_list[7]}
+8️⃣{new_list[5]}
 
-9️⃣{new_list[8]}
+9️⃣{new_list[7]}
 
 🔟{new_list[9]}
             """
+        # print(content)
         bark = SendBark(key)
         bark.send_t_c(title, content)
