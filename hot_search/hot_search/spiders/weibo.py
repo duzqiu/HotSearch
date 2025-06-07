@@ -51,29 +51,49 @@ class WeiboSpider(scrapy.Spider):
         title = f"微博热搜 {formatted}"
 
         content = f"""
-🏆{hot_gov}
+🏆 {hot_gov}
 
-🥇{new_list[0]}
+🥇 {new_list[0]}
 
-🥈{new_list[1]}
+🥈 {new_list[1]}
 
-🥉{new_list[2]}
+🥉 {new_list[2]}
 
-4️⃣{new_list[3]}
+4️⃣ {new_list[3]}
 
-5️⃣{new_list[4]}
+5️⃣ {new_list[4]}
 
-6️⃣{new_list[5]}
+6️⃣ {new_list[5]}
 
-7️⃣{new_list[6]}
+7️⃣ {new_list[6]}
 
-8️⃣{new_list[7]}
+8️⃣ {new_list[7]}
 
-9️⃣{new_list[8]}
+9️⃣ {new_list[8]}
 
-🔟{new_list[9]}
+🔟 {new_list[10]}
+
+✅ {new_list[11]}
+
+✅ {new_list[12]}
+
+✅ {new_list[13]}
+
+✅ {new_list[14]}
+ 
+✅ {new_list[15]}
+
+✅ {new_list[16]}
+
+✅ {new_list[17]}
+
+✅ {new_list[18]}
+
+✅ {new_list[19]}
+
+✅ {new_list[20]}
         """
-        print(content)
+        # print(content)
         key = "UZ9juRSNtAMpnzWEQokJYF"
         bark = SendBark(key)
         bark.send_t_c(title, content)

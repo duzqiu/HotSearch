@@ -33,25 +33,25 @@ class BaiduSpider(scrapy.Spider):
         formatted = now.strftime("%Y-%m-%d %H:%M")
         title = f"百度热搜 {formatted}"
         content = f"""
-🏆{new_list[0]}
+🏆 {new_list[0]}
 
-🥈{new_list[2]}
+🥈 {new_list[2]}
 
-🥉{new_list[4]}
+🥉 {new_list[4]}
 
-4️⃣{new_list[6]}
+4️⃣ {new_list[6]}
 
-5️⃣{new_list[8]}
+5️⃣ {new_list[8]}
 
-6️⃣{new_list[1]}
+6️⃣ {new_list[1]}
 
-7️⃣{new_list[3]}
+7️⃣ {new_list[3]}
 
-8️⃣{new_list[5]}
+8️⃣ {new_list[5]}
 
-9️⃣{new_list[7]}
+9️⃣ {new_list[7]}
 
-🔟{new_list[9]}
+🔟 {new_list[9]}
             """
         # print(content)
         bark = SendBark(key)

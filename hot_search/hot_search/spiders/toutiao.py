@@ -39,25 +39,25 @@ class ToutiaoSpider(scrapy.Spider):
         formatted = now.strftime("%Y-%m-%d %H:%M")
         title = f"头条热榜 {formatted}"
         content = f"""
-🏆{new_list[0]}
+🏆 {new_list[0]}
 
-🥈{new_list[1]}
+🥈 {new_list[1]}
 
-🥉{new_list[2]}
+🥉 {new_list[2]}
 
-4️⃣{new_list[3]}
+4️⃣ {new_list[3]}
 
-5️⃣{new_list[4]}
+5️⃣ {new_list[4]}
 
-6️⃣{new_list[5]}
+6️⃣ {new_list[5]}
 
-7️⃣{new_list[6]}
+7️⃣ {new_list[6]}
 
-8️⃣{new_list[7]}
+8️⃣ {new_list[7]}
 
-9️⃣{new_list[8]}
+9️⃣ {new_list[8]}
 
-🔟{new_list[9]}
+🔟 {new_list[9]}
         """
         bark = SendBark(key)
         bark.send_t_c(title, content)
