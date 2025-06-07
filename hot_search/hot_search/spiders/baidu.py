@@ -31,7 +31,7 @@ class BaiduSpider(scrapy.Spider):
 
         now = datetime.now()
         formatted = now.strftime("%Y-%m-%d %H:%M")
-        title = f"百度热榜 {formatted}"
+        title = f"百度热搜 {formatted}"
         content = f"""
 🏆{new_list[0]}
 
